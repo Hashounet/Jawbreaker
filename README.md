@@ -7,7 +7,7 @@ Ce tool permet d'obfusquer un script Python tout en assurant son fonctionnement 
 -----
   
 # Créateur
-Je le rappel encore une fois **JE NE SUIS PAS** le créateur de cet outil.
+Je le rappel encore une fois __**JE NE SUIS PAS**__ le créateur de cet outil.
 <br>
 Le créateur de cet outil est <a href="https://github.com/billythegoat356">billythegoat356</a>.
 <br>
