@@ -39,5 +39,5 @@ Enter name of output file > lunky_obf
 Building obfuscated file...
 Output > /home/hash/Desktop/Lunky/lunky_obf.py
   
-hash@host ~> cc c'est Hash
+hash@host ~> cc c'est Hash le bg
 ```
