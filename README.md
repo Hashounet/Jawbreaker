@@ -3,3 +3,39 @@
 
 # Jawbreaker
 Ce tool permet d'obfusquer un script Python tout en assurant son fonctionnement Il fonctionne grace a l'encodage en base16, base32, et base64, aux requetes http et hastebin. Développer par <a href="https://github.com/billythegoat356">billythegoat356</a> mais toutes fois ceci ne reste qu'une bêta de l'outil. EN cas de problèmes faites un pull request.
+  
+-----
+  
+# Créateur
+Je le rappel encore une fois *JE NE SUIS PAS* le créateur de cet outil.
+<br>
+le créateur de cet outil est <a href="https://github.com/billythegoat356">billythegoat356</a>.
+  
+-----
+  
+# Tutoriel
+```
+hash@host ~> python3 jawbreaker.py
+  
+                                                                                    
+         #                                                                
+         #   ##   #    # #####  #####  ######   ##   #    # ###### #####  
+         #  #  #  #    # #    # #    # #       #  #  #   #  #      #    # 
+         # #    # #    # #####  #    # #####  #    # ####   #####  #    # 
+   #     # ###### # ## # #    # #####  #      ###### #  #   #      #####  
+   #     # #    # ##  ## #    # #   #  #      #    # #   #  #      #   #  
+     #####  #    # #    # #####  #    # ###### #    # #    # ###### #    # 
+                                                                                                                                                          
+
+                      # # # billythegoat356 # # #
+
+
+
+Enter file name > /home/hash/Desktop/Lunky/main.py
+Enter name of output file > lunky_obf   
+
+Building obfuscated file...
+Output > /home/hash/Desktop/Lunky/lunky_obf.py
+  
+hash@host ~> |
+```
