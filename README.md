@@ -10,6 +10,8 @@ Ce tool permet d'obfusquer un script Python tout en assurant son fonctionnement 
 Je le rappel encore une fois **JE NE SUIS PAS** le créateur de cet outil.
 <br>
 Le créateur de cet outil est <a href="https://github.com/billythegoat356">billythegoat356</a>.
+<br>
+Sont serveur discord : <a href="https://discord.gg/75V8N8sb7n">discord.gg/pague</a>
   
 -----
   
